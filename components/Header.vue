@@ -1,43 +1,56 @@
 <template>
-  <header>
-      <nav>
-          <ul>
-              <li><nuxt-link to="/">Starting Page</nuxt-link></li>
-              <li><nuxt-link to="/recipes">Recipe</nuxt-link></li>
-              <li><nuxt-link to="/about">About</nuxt-link></li>
-              <li><nuxt-link to="/trainedModels">Trained Models</nuxt-link></li>
-          </ul>
-      </nav>
+  <header class="main-header">
+    <nav class="main-nav">
+      <ul class="nav-links">
+          <nuxt-link to="/home" tag="li" class="nav-link"><a>Starting Page</a></nuxt-link>
+          <nuxt-link to="/recipes" tag="li" class="nav-link"><a>Recipes</a></nuxt-link>
+        <nuxt-link to="/about" tag="li" class="nav-link"><a>About</a></nuxt-link>
+        <nuxt-link to="/trainedModels" tag="li" class="nav-link"><a>Trained Models</a></nuxt-link>
+      </ul>
+    </nav>
   </header>
 </template>
 
-
 <style scoped>
-header {
+  .main-header {
+    position: fixed;
+    top: 0;
+    left: 0;
     width: 100%;
-    height: 30px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background-color: #521751
-}
-
-ul {
+    background: #022d30;
+    height: 4.5rem;
+  }
+  .main-nav {
+    height: 100%;
+  }
+  .nav-links {
     list-style: none;
-    padding: 0;
     margin: 0;
+    padding: 0;
     display: flex;
     justify-content: center;
     align-items: center;
-}
-
-li {
-
-    margin: 0 10px;
-}
-
-a {
+    height: 100%;
+  }
+  .nav-link {
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 1rem;
+    padding: 0.3rem;
+  }
+  .nav-link.nuxt-link-active {
+    border-bottom: 3px solid #06c4d1;
+  }
+  .nav-link a {
+    display: block;
     text-decoration: none;
     color: white;
-}
+  }
+  .nav-link a:hover,
+  .nav-link a:active,
+  .nav-link.nuxt-link-active a {
+    color: #06c4d1;
+  }
 </style>

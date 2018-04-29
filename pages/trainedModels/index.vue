@@ -1,5 +1,6 @@
 <template>
   <section class="trainedModels">
+      <NewTrainedModel/>
       <TrainedModel 
       v-for="model in data.trainedModels"
       :key="model.id"
@@ -16,10 +17,11 @@
 
 <script>
 import TrainedModel from "@/components/TrainedModel";
+import NewTrainedModel from "@/components/NewTrainedModel";
 
 export default {
   components: {
-    TrainedModel
+    TrainedModel, NewTrainedModel
   },
   async asyncData({ app }) {
   const data = await app.$axios.$get('http://localhost:8000/trainedModels/')

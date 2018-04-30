@@ -2,12 +2,71 @@
   <section class="single-model">
       <h2>{{ singleModel.trainedModel.name }}</h2>
       <h1>{{ singleModel.trainedModel.author }}</h1>
+      <p>Gatunek:</p>
+      <p>{{ singleModel.trainedModel.genre }}</p>
+      <div>
+          <img class="model-image" :src="'http://localhost:8000/uploads/' + singleModel.trainedModel.pathImage" :alt="singleModel.trainedModel.name">
+      </div>
       <p>{{ singleModel.trainedModel.pathT7 }}</p>
+      <p>Opis: </p>
+      <p>{{ singleModel.trainedModel.description }}</p>
+
+      <form class="" method="post" @submit.prevent="generateNow">
+          <p>Temperatura:</p>
+  {{ temperature/100 }} <input type="range" name="" min="0" max="100" v-model="temperature">
+  <p>Długość tekstu do wygenerowania:</p>
+  {{ textLength }} <input type="range" name="" min="0" max="5000" v-model="textLength">
+  <br>
+   <button class="button--green" type="submit" name="button">Generuj</button>
+</form>
+<p v-if="generatedSample!==''">działa</p>
+
+<p v-for="sample in generatedSample.text"
+:key="sample">{{ sample }}</p>
   </section>
 </template>
 
 <script>
+import axios from "axios";
+
 export default {
+  data() {
+    return {
+      trainedModel: "",
+      temperature: 90,
+      textLength: 500,
+      generatedSample: ''
+    };
+  },
+  methods: {
+    generateNow() {
+      console.log("temperature:", this.temperature / 100);
+      console.log("textLength:", this.textLength);
+      console.log("pathT7:", this.singleModel.trainedModel.pathT7);
+      console.log("pathJson:", this.singleModel.trainedModel.pathJson);
+      console.log("modelID:", this.singleModel.trainedModel._id);
+      axios
+        .post(`http://localhost:8000/samples/`, {
+          pathT7: this.singleModel.trainedModel.pathT7,
+          temperature: this.temperature / 100,
+          textLength: this.textLength,
+          pathJson: this.singleModel.trainedModel.pathJson,
+          trainedModelId: this.singleModel.trainedModel._id
+        })
+        .then(response => {
+          console.log("response:", response);
+          this.generatedSample = response.data.generatedSample;
+          if (response.status === 201) {
+            console.log("udało się!");
+          } else {
+            console.log("NIE udało się!");
+          }
+        })
+        .catch(e => {
+          this.errors.push(e);
+        });
+    }
+  },
   async asyncData(context) {
     const singleModel = await context.app.$axios.$get(
       "http://localhost:8000/trainedModels/" + context.params.id
@@ -28,7 +87,7 @@ export default {
   padding: 30px;
 }
 
-.recipe-image {
+.model-image {
   width: 100%;
 }
 </style>

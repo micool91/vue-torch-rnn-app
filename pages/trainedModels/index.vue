@@ -4,8 +4,10 @@
       <TrainedModel 
       v-for="model in data.trainedModels"
       :key="model.id"
+      :pathImage="model.pathImage"
       :name="model.name"
       :author="model.author"
+      :description="model.description"
       :id="model._id"
       :pathT7="model.pathT7"
       :pathJson="model.pathJson"

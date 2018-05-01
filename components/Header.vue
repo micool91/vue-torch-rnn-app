@@ -6,6 +6,7 @@
           <nuxt-link to="/recipes" tag="li" class="nav-link"><a>Recipes</a></nuxt-link>
         <nuxt-link to="/about" tag="li" class="nav-link"><a>About</a></nuxt-link>
         <nuxt-link to="/trainedModels" tag="li" class="nav-link"><a>Trained Models</a></nuxt-link>
+        <nuxt-link to="/samples" tag="li" class="nav-link"><a>Samples</a></nuxt-link>
       </ul>
     </nav>
   </header>

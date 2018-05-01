@@ -9,7 +9,7 @@
       </div>
       <p>{{ singleModel.trainedModel.pathT7 }}</p>
       <p>Opis: </p>
-      <p>{{ singleModel.trainedModel.description }}</p>
+      <p v-for="d in singleModel.trainedModel.description" :key="d">{{ d }}</p>
 
       <form class="" method="post" @submit.prevent="generateNow">
           <p>Temperatura:</p>
@@ -21,21 +21,38 @@
 </form>
 <p v-if="generatedSample!==''">działa</p>
 
-<p v-for="sample in generatedSample.text"
-:key="sample">{{ sample }}</p>
+<div class="tekst" v-if="generatedSample.text">
+    <p v-for="sample in generatedSample.text"
+    :key="sample">{{ sample }}</p>
+</div>
+
+    <Sample 
+      v-for="s in samplesByModel.samples"
+      :key="s.id"
+      :modelName="s.trainedModel.name"
+      :temperature="s.temperature"
+      :textLength="s.textLength"
+      :text="s.text"
+      :id="s._id"
+    />
   </section>
+
 </template>
 
 <script>
 import axios from "axios";
+import Sample from "@/components/Sample";
 
 export default {
+  components: {
+    Sample
+  },
   data() {
     return {
       trainedModel: "",
       temperature: 90,
       textLength: 500,
-      generatedSample: ''
+      generatedSample: ""
     };
   },
   methods: {
@@ -71,7 +88,10 @@ export default {
     const singleModel = await context.app.$axios.$get(
       "http://localhost:8000/trainedModels/" + context.params.id
     );
-    return { singleModel };
+    const samplesByModel = await context.app.$axios.$get(
+      "http://localhost:8000/samples/byModel/" + context.params.id
+    );
+    return { singleModel, samplesByModel };
   }
 };
 </script>
@@ -89,5 +109,19 @@ export default {
 
 .model-image {
   width: 100%;
+}
+
+.tekst {
+  box-sizing: border-box;
+  width: 90%;
+  padding: 8px;
+  border: 1px solid #ccc;
+  box-shadow: 0 2px 2px #aaa;
+  margin: 10px;
+  text-align: left;
+}
+
+p {
+    margin: 15px;
 }
 </style>

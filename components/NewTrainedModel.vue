@@ -8,8 +8,7 @@
 
 
 <script>
-export default {
-};
+export default {};
 </script>
 
 <style scoped>
@@ -20,13 +19,14 @@ a {
 
 .newTrainedModel {
   box-sizing: border-box;
-  width: 280px;
-  height: 500px;
+  width: 400px;
+  height: 600px;
   padding: 8px;
   border: 1px solid #ccc;
   box-shadow: 0 2px 2px #aaa;
   margin: 10px;
-  background-color: #41B883;
+  background-color: #41b883;
+  border-radius: 15px;
 }
 </style>
 

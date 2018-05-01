@@ -1,19 +1,22 @@
 <template>
   
-    <article class="trainedModel">
-          <div class="thumbnail" :style="{ backgroundImage: 'url(http://localhost:8000/uploads/' + pathImage + ')'}"></div>
-          <h2>{{ name }}</h2>
-          <h1>{{ author }}</h1>
-          <p>{{ genre }}</p>
-          <p>{{ id }}</p>
-          <p>{{ pathT7 }}</p>
-          <p>{{ pathJson }}</p>
-          <p>{{ pathImage }}</p>
-          <p>{{ numLayers }}</p>
-          <p>{{ rnnSize }}</p>
+    <article class="sample">
+          <h2>{{ modelName }}</h2>
+          <p>Temperatura testu:</p>
+          <p>{{ temperature }}</p>
+          <p>Długość tekstu:</p>
+          <p>{{ textLength }}</p>
+          <p>Fragment tekstu:</p>
+          <p>{{ text[0] }}</p>
+          <p>{{ text[1] }}</p>
+          <p>{{ text[2] }}</p>
+          <p>{{ text[3] }}</p>
+          <p>{{ text[4] }}</p>
+          <p>{{ text[5] }}</p>
+          <p>{{ text[6] }}</p>
           <div class="links">
-          <nuxt-link :to="'/trainedModels/' + id">
-            <button class="button--green">Wybierz</button>
+          <nuxt-link :to="'/samples/' + id">
+            <button class="button--green">Czytaj dalej</button>
           </nuxt-link>
           <button class="button--grey" @click="deleteNow">Usuń</button>
           </div>
@@ -28,25 +31,14 @@ import axios from "axios";
 export default {
   data() {
     return {
-      statusCode: 11
+      statusCode: 0
     };
   },
-  props: [
-    "name",
-    "author",
-    "genre",
-    "description",
-    "id",
-    "pathImage",
-    "pathT7",
-    "pathJson",
-    "numLayers",
-    "rnnSize"
-  ],
+  props: ["id", "modelName", "textLength", "temperature", "text"],
   methods: {
     deleteNow() {
       axios
-        .delete(`http://localhost:8000/trainedModels/` + this.id)
+        .delete(`http://localhost:8000/samples/` + this.id)
         .then(response => {
           console.log("response:", response);
           this.statusCode = response.status;
@@ -71,19 +63,17 @@ a {
   color: black;
 }
 
-.trainedModel {
+.sample {
   box-sizing: border-box;
-  width: 400px;
-  height: 600px;
-  /* padding: 8px; */
+  width: 90%;
+  padding: 8px;
   border: 1px solid #ccc;
   box-shadow: 0 2px 2px #aaa;
   margin: 10px;
-  border-radius: 15px;
 }
 
 .links {
-  padding: 15px;
+  padding-top: 15px;
   justify-content: center;
   align-items: center;
   text-align: center;
@@ -93,9 +83,11 @@ a {
   background-position: center;
   background-size: cover;
   width: 100%;
-  height: 300px;
-  border-top-left-radius: 15px;
-  border-top-right-radius: 15px;
+  height: 200px;
+}
+
+p {
+    margin: 15px;
 }
 </style>
 

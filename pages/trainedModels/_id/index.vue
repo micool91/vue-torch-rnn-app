@@ -35,8 +35,8 @@
       :text="s.text"
       :id="s._id"
     />
+      <p>{{ userEmail }}</p>
   </section>
-
 </template>
 
 <script>
@@ -46,6 +46,14 @@ import Sample from "@/components/Sample";
 export default {
   components: {
     Sample
+  },
+  computed: {
+    userEmail() {
+      return this.$store.getters.userEmail;
+    },
+    userToken() {
+        return this.$store.getters.userToken
+    }
   },
   data() {
     return {
@@ -62,19 +70,34 @@ export default {
       console.log("pathT7:", this.singleModel.trainedModel.pathT7);
       console.log("pathJson:", this.singleModel.trainedModel.pathJson);
       console.log("modelID:", this.singleModel.trainedModel._id);
+      console.log(this.userToken);
+
+      //   const tokenParts = this.token.split(".");
+      //   const encodedPayload = tokenParts[1];
+      //   const rawPayload = atob(encodedPayload);
+      //   this.user = JSON.parse(rawPayload);
+      console.log(this.userEmail + ': ' + this.userToken);
+      let config = {
+        headers: { Authorization: "bearer " + this.userToken }
+      };
+
       axios
-        .post(`http://localhost:8000/samples/`, {
-          pathT7: this.singleModel.trainedModel.pathT7,
-          temperature: this.temperature / 100,
-          textLength: this.textLength,
-          pathJson: this.singleModel.trainedModel.pathJson,
-          trainedModelId: this.singleModel.trainedModel._id
-        })
+        .post(
+          `http://localhost:8000/samples/`,
+          {
+            pathT7: this.singleModel.trainedModel.pathT7,
+            temperature: this.temperature / 100,
+            textLength: this.textLength,
+            pathJson: this.singleModel.trainedModel.pathJson,
+            trainedModelId: this.singleModel.trainedModel._id
+          },
+          config
+        )
         .then(response => {
           console.log("response:", response);
-          this.generatedSample = response.data.generatedSample;
           if (response.status === 201) {
             console.log("udało się!");
+            this.generatedSample = response.data.generatedSample;
           } else {
             console.log("NIE udało się!");
           }
@@ -122,6 +145,6 @@ export default {
 }
 
 p {
-    margin: 15px;
+  margin: 15px;
 }
 </style>

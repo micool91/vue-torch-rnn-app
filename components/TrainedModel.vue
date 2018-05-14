@@ -15,7 +15,7 @@
           <nuxt-link :to="'/trainedModels/' + id">
             <button class="button--green">Wybierz</button>
           </nuxt-link>
-          <button class="button--grey" @click="deleteNow">Usuń</button>
+          <button v-if="usunVisible" class="button--grey" @click="deleteNow">Usuń</button>
           </div>
     </article>
   
@@ -31,6 +31,14 @@ export default {
       statusCode: 11
     };
   },
+  computed: {
+    userEmail() {
+      return this.$store.getters.userEmail;
+    },
+    userToken() {
+      return this.$store.getters.userToken;
+    }
+  },
   props: [
     "name",
     "author",
@@ -41,12 +49,18 @@ export default {
     "pathT7",
     "pathJson",
     "numLayers",
-    "rnnSize"
+    "rnnSize",
+    "usunVisible"
   ],
   methods: {
     deleteNow() {
+      console.log(this.token);
+      let config = {
+        headers: { Authorization: "bearer " + this.userToken }
+      };
+      console.log(config);
       axios
-        .delete(`http://localhost:8000/trainedModels/` + this.id)
+        .delete(`http://localhost:8000/trainedModels/` + this.id, config)
         .then(response => {
           console.log("response:", response);
           this.statusCode = response.status;

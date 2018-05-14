@@ -34,11 +34,22 @@ export default {
       statusCode: 0
     };
   },
+  computed: {
+    userEmail() {
+      return this.$store.getters.userEmail;
+    },
+    userToken() {
+      return this.$store.getters.userToken;
+    }
+  },
   props: ["id", "modelName", "textLength", "temperature", "text"],
   methods: {
     deleteNow() {
+      let config = {
+        headers: { Authorization: "bearer " + this.userToken }
+      };
       axios
-        .delete(`http://localhost:8000/samples/` + this.id)
+        .delete(`http://localhost:8000/samples/` + this.id, config)
         .then(response => {
           console.log("response:", response);
           this.statusCode = response.status;
@@ -87,7 +98,7 @@ a {
 }
 
 p {
-    margin: 15px;
+  margin: 15px;
 }
 </style>
 

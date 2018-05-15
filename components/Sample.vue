@@ -18,7 +18,7 @@
           <nuxt-link :to="'/samples/' + id">
             <button class="button--green">Czytaj dalej</button>
           </nuxt-link>
-          <button class="button--grey" @click="deleteNow">Usuń</button>
+          <button v-if="showDelete" class="button--grey" @click="deleteNow">Usuń</button>
           </div>
     </article>
   
@@ -42,7 +42,7 @@ export default {
       return this.$store.getters.userToken;
     }
   },
-  props: ["id", "modelName", "textLength", "temperature", "text"],
+  props: ["id", "modelName", "textLength", "temperature", "text", "showDelete"],
   methods: {
     deleteNow() {
       let config = {

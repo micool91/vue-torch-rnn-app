@@ -1,5 +1,6 @@
 <template>
   <div>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat">
     <Header />
     <br>
     <br>
@@ -33,6 +34,22 @@ html {
   -webkit-font-smoothing: antialiased;
   box-sizing: border-box;
 }
+
+body,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: "Montserrat", sans-serif;
+}
+body,
+html {
+  height: 100%;
+  background: #e2e1e0;
+}
+
 *,
 *:before,
 *:after {

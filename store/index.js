@@ -25,11 +25,16 @@ const createStore = () => {
         },
         getters: {
             userEmail: state => {
-                let tokenParts = state.auth.accessToken.split(".");
-                let encodedPayload = tokenParts[1];
-                let rawPayload = atob(encodedPayload);
-                let user = JSON.parse(rawPayload);
-                return user.email
+                if (state.auth) {
+                    let tokenParts = state.auth.accessToken.split(".");
+                    let encodedPayload = tokenParts[1];
+                    let rawPayload = atob(encodedPayload);
+                    let user = JSON.parse(rawPayload);
+                    return user.email
+                } else
+                {
+                    return null;
+                }
             },
             userToken: state => {
                 return state.auth.accessToken;

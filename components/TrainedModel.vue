@@ -1,6 +1,6 @@
 <template>
   
-    <article class="trainedModel">
+    <article class="card card-1">
           <div class="thumbnail" :style="{ backgroundImage: 'url(http://localhost:8000/uploads/' + pathImage + ')'}"></div>
           <h2>{{ name }}</h2>
           <h1>{{ author }}</h1>
@@ -80,27 +80,27 @@ export default {
 </script>
 
 <style scoped>
-a {
-  text-decoration: none;
-  color: black;
-}
 
-.trainedModel {
-  box-sizing: border-box;
-  width: 400px;
+
+.card {
+  background: #fff;
+  border-radius: 2px;
+  display: inline-block;
   height: 600px;
-  /* padding: 8px; */
-  border: 1px solid #ccc;
-  box-shadow: 0 2px 2px #aaa;
-  margin: 10px;
-  border-radius: 15px;
+  margin: 1rem;
+  position: relative;
+  width: 400px;
+  border-top-left-radius: 15px;
+  border-top-right-radius: 15px;
 }
 
-.links {
-  padding: 15px;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
+.card-1 {
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+  transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+.card-1:hover {
+  box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
 }
 
 .thumbnail {

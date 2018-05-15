@@ -14,14 +14,14 @@
     </div>
   </div> 
   <nuxt-link class="linkz" to="/about">O projekcie</nuxt-link>
-  <div class="dropdown">
+  <div v-if="isAuthenticated" class="dropdown">
     <button class="dropbtn">{{ userEmail }}
       <i class="fa fa-caret-down"></i>
     </button>
     <div class="dropdown-content">
       <nuxt-link class="linkz" to="/myTrainedModels">Modele Treningowe</nuxt-link>
       <nuxt-link class="linkz" to="/mySamples">Sample</nuxt-link>
-      <nuxt-link v-if="isAuthenticated" class="linkz" to="/logout">Wyloguj</nuxt-link>
+      <nuxt-link class="linkz" to="/logout">Wyloguj</nuxt-link>
     </div>
   </div> 
   <nuxt-link v-if="!isAuthenticated" class="linkz" to="/login">Zaloguj</nuxt-link>

@@ -14,7 +14,6 @@
       :numLayers="model.numLayers"
       :rnnSize="model.rnnSize"
       />
-      <p>Token: {{ $store.state.auth.accessToken }}</p>
   </section>
 </template>
 
@@ -23,7 +22,6 @@ import TrainedModel from "@/components/TrainedModel";
 import NewTrainedModel from "@/components/NewTrainedModel";
 
 export default {
-  middleware: "authenticated",
   components: {
     TrainedModel,
     NewTrainedModel

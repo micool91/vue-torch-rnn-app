@@ -11,7 +11,7 @@
       <p>Opis: </p>
       <p v-for="d in singleModel.trainedModel.description" :key="d">{{ d }}</p>
 
-      <form class="" method="post" @submit.prevent="generateNow">
+      <form v-if="isAuthenticated" class="" method="post" @submit.prevent="generateNow">
           <p>Temperatura:</p>
   {{ temperature/100 }} <input type="range" name="" min="0" max="100" v-model="temperature">
   <p>Długość tekstu do wygenerowania:</p>
@@ -52,7 +52,10 @@ export default {
       return this.$store.getters.userEmail;
     },
     userToken() {
-        return this.$store.getters.userToken
+      return this.$store.getters.userToken;
+    },
+    isAuthenticated() {
+      return this.$store.getters.isAuthenticated;
     }
   },
   data() {
@@ -76,7 +79,7 @@ export default {
       //   const encodedPayload = tokenParts[1];
       //   const rawPayload = atob(encodedPayload);
       //   this.user = JSON.parse(rawPayload);
-      console.log(this.userEmail + ': ' + this.userToken);
+      console.log(this.userEmail + ": " + this.userToken);
       let config = {
         headers: { Authorization: "bearer " + this.userToken }
       };

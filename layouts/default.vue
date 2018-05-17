@@ -43,6 +43,7 @@ h4,
 h5,
 h6 {
   font-family: "Montserrat", sans-serif;
+  color: #526488;
 }
 body,
 html {

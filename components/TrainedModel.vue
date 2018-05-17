@@ -1,15 +1,16 @@
 <template>
   
     <article class="card card-1">
-          <div class="thumbnail" :style="{ backgroundImage: 'url(http://localhost:8000/uploads/' + pathImage + ')'}"></div>
-          <h2>{{ name }}</h2>
-          <h1>{{ author }}</h1>
+          <div class="thumbnail" :style="{ backgroundImage: 'url(http://207.154.236.217:80/uploads/' + pathImage + ')'}"></div>
+          <h3>Nazwa:</h3>
+          <h1>{{ name }}</h1>
+          <h3>Autor:</h3>
+          <h2>{{ author }}</h2>
+          <h3>Gatunek:</h3>
           <p>{{ genre }}</p>
-          <p>{{ id }}</p>
-          <p>{{ pathT7 }}</p>
-          <p>{{ pathJson }}</p>
-          <p>{{ pathImage }}</p>
+          <h3>Ilość warstw sieci LSTM:</h3>
           <p>{{ numLayers }}</p>
+          <h3>Ilość węzłów sieci LSTM:</h3>
           <p>{{ rnnSize }}</p>
           <div class="links">
           <nuxt-link :to="'/trainedModels/' + id">
@@ -60,7 +61,7 @@ export default {
       };
       console.log(config);
       axios
-        .delete(`http://localhost:8000/trainedModels/` + this.id, config)
+        .delete(`http://207.154.236.217:80/trainedModels/` + this.id, config)
         .then(response => {
           console.log("response:", response);
           this.statusCode = response.status;
@@ -80,8 +81,6 @@ export default {
 </script>
 
 <style scoped>
-
-
 .card {
   background: #fff;
   border-radius: 2px;
@@ -90,6 +89,7 @@ export default {
   margin: 1rem;
   position: relative;
   width: 400px;
+  border: 1px solid #949494;
   border-top-left-radius: 15px;
   border-top-right-radius: 15px;
 }
@@ -111,5 +111,54 @@ export default {
   border-top-left-radius: 15px;
   border-top-right-radius: 15px;
 }
+
+.links {
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+h1 { 
+    display: block;
+    font-size: 2em;
+    margin-bottom: 0.17em;
+    margin-left: 0;
+    margin-right: 0;
+    font-weight: bold;
+    text-align: left;
+    margin-left: 60px;
+}
+
+h2 {
+    display: block;
+    font-size: 1.5em;
+    margin-top: 0.10em;
+    margin-bottom: 0.13em;
+    margin-left: 0;
+    margin-right: 0;
+    font-weight: bold;
+    text-align: left;
+    margin-left: 60px;
+}
+
+h3 { 
+    display: block;
+    font-size: 0.87em;
+    margin-top: 0em;
+    margin-bottom: 0em;
+    margin-left: 40px;
+    margin-right: 0;
+    font-weight: normal;
+    font-style: italic;
+    color:#3b8070;
+}
+
+p {
+    text-align: left;
+    font-size: 1.4em;
+    margin-left: 60px;
+}
+
 </style>
 

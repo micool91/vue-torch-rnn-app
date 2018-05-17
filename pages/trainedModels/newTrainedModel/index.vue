@@ -76,7 +76,7 @@ export default {
       data.append("pathT7", document.getElementById("pathT7").files[0]);
       data.append("pathJson", document.getElementById("pathJson").files[0]);
       axios
-        .post(`http://localhost:8000/trainedModels/`, data, {
+        .post(`http://207.154.236.217:80/trainedModels/`, data, {
           headers: {
             "Content-Type": "multipart/form-data",
             Authorization: "bearer " + this.userToken

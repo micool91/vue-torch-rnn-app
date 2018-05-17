@@ -1,16 +1,16 @@
 <template>
-  <section class="container">
+  <section class="zasobnik">
     <div>
       <logo/>
       <h1 class="title">
-        vue-torch-rnn-app
+        Jakobowski.app
       </h1>
       <h2 class="subtitle">
-        Nuxt.js Torch-RNN web application
+        Generowanie treści przy pomocy sieci LSTM
       </h2>
-      <div class="links">
-        <a href="https://nuxtjs.org/" target="_blank" class="button--green">Documentation</a>
-        <a href="https://github.com/nuxt/nuxt.js" target="_blank" class="button--grey">GitHub</a>
+      <div class="odnosniki">
+        <a href="https://github.com/micool91/vue-torch-rnn-app" target="_blank" class="button--green">Źródła GitHub</a>
+        <a href="https://bitbucket.org/mjakobowski/magisterka/src/master/s" target="_blank" class="button--grey">Dokumentacja Bitbucket</a>
       </div>
     </div>
   </section>
@@ -27,7 +27,7 @@ export default {
 </script>
 
 <style>
-.container
+.zasobnik
 {
   min-height: 100vh;
   display: flex;
@@ -52,7 +52,8 @@ export default {
   word-spacing: 5px;
   padding-bottom: 15px;
 }
-.links
+
+.odnosniki
 {
   padding-top: 15px;
 }

@@ -25,6 +25,7 @@
     </div>
   </div> 
   <nuxt-link v-if="!isAuthenticated" class="linkz" to="/login">Zaloguj</nuxt-link>
+  <nuxt-link v-if="!isAuthenticated" class="linkz" to="/register">Zarejestruj się</nuxt-link>
   <a href="javascript:void(0);" style="font-size:15px;" class="icon" @click="myFunction()">&#9776;</a>
 </div>
   </header>
@@ -84,7 +85,7 @@ linkz {
 }
 
 .company {
-  background-color: #024404;
+  background-color: #3b8070;
   color: white;
 }
 

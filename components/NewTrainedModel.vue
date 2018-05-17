@@ -5,7 +5,8 @@
         <br><br><br><br><br><br><br><br><br>
         <i class="fas fa-book"></i>
         <br><br>
-          <h2>Dodaj nowy model treningowy</h2>
+          <div class="tekst">Dodaj nowy</div>
+          <div class="tekst">model treningowy</div>
     </article>
   </nuxt-link>
 </template>
@@ -33,6 +34,11 @@ export default {};
 
 i {
     font-size: 100px;
+}
+
+.tekst {
+    font-size: 30px;
+    font-weight: bold;
 }
 
 .card-1 {

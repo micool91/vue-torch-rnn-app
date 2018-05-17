@@ -1,14 +1,14 @@
 <template>
 <form class="logowanie" method="post" @submit.prevent="postNow">
   <div class="container">
-      <p>Zaloguj się do systemu.</p>
-    <label for="uname"><b>Login:</b></label>
+      <p>Zarejestruj się w systemie.</p>
+    <label for="uname"><b>Email:</b></label>
     <input type="text" placeholder="Enter Username" name="uname" required v-model="uname">
 
     <label for="psw"><b>Hasło:</b></label>
     <input type="password" placeholder="Enter Password" name="psw" required v-model="psw">
     <div class="links">
-    <button class="button--green" type="submit">Login</button>
+    <button class="button--green" type="submit">Zarejestruj</button>
     </div>
   </div>
 </form>
@@ -32,7 +32,7 @@ export default {
     postNow() {
       axios
         .post(
-          `http://207.154.236.217:80/user/login`,
+          `http://207.154.236.217:80/user/signup`,
           {
             email: this.uname,
             password: this.psw
@@ -44,12 +44,7 @@ export default {
         .then(response => {
           console.log("response:", response);
 
-          if (response.status === 200) {
-            const auth = {
-              accessToken: response.data.token
-            };
-            this.$store.commit("update", auth); // mutating to store for client rendering
-            Cookie.set("auth", auth); // saving token in cookie for server rendering
+          if (response.status === 201) {
             this.$router.push("/");
           }
         })

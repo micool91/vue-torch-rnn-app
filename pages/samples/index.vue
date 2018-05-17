@@ -20,7 +20,7 @@ export default {
     Sample
   },
   async asyncData({ app }) {
-    const data = await app.$axios.$get("http://localhost:8000/samples/");
+    const data = await app.$axios.$get("http://207.154.236.217:80/samples/");
     return { data };
   }
 };

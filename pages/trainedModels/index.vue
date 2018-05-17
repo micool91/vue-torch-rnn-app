@@ -7,6 +7,7 @@
       :pathImage="model.pathImage"
       :name="model.name"
       :author="model.author"
+      :genre="model.genre"
       :description="model.description"
       :id="model._id"
       :pathT7="model.pathT7"
@@ -22,12 +23,14 @@ import TrainedModel from "@/components/TrainedModel";
 import NewTrainedModel from "@/components/NewTrainedModel";
 
 export default {
+  middleware: "authenticated",
   components: {
     TrainedModel,
     NewTrainedModel
   },
   async asyncData({ app }) {
-    const data = await app.$axios.$get("http://localhost:8000/trainedModels/");
+    const data = await app.$axios.$get("http://207.154.236.217:80/trainedModels/");
+    console.log(data);
     return { data };
   }
 };

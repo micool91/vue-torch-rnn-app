@@ -1,12 +1,17 @@
 <template>
   
-    <article class="sample">
-          <h2>{{ modelName }}</h2>
-          <p>Temperatura testu:</p>
+    <article class="card card-1">
+        <br>
+        <div class="naglowek">
+          <h3>Nazwa modelu:</h3>
+          <h1>{{ modelName }}</h1>
+          <h3>Temperatura tekstu:</h3>
           <p>{{ temperature }}</p>
-          <p>Długość tekstu:</p>
+          <h3>Długość tekstu:</h3>
           <p>{{ textLength }}</p>
-          <p>Fragment tekstu:</p>
+          <h3>Fragment tekstu:</h3>
+        </div>
+          <blockquote>
           <p>{{ text[0] }}</p>
           <p>{{ text[1] }}</p>
           <p>{{ text[2] }}</p>
@@ -14,6 +19,10 @@
           <p>{{ text[4] }}</p>
           <p>{{ text[5] }}</p>
           <p>{{ text[6] }}</p>
+          <p>{{ text[7] }}</p>
+          <p>{{ text[8] }}</p>
+          <p>{{ text[9] }}</p>
+          </blockquote>
           <div class="links">
           <nuxt-link :to="'/samples/' + id">
             <button class="button--green">Czytaj dalej</button>
@@ -21,7 +30,6 @@
           <button v-if="showDelete" class="button--grey" @click="deleteNow">Usuń</button>
           </div>
     </article>
-  
 </template>
 
 
@@ -49,7 +57,7 @@ export default {
         headers: { Authorization: "bearer " + this.userToken }
       };
       axios
-        .delete(`http://localhost:8000/samples/` + this.id, config)
+        .delete(`http://http://207.154.236.217:80/samples/` + this.id, config)
         .then(response => {
           console.log("response:", response);
           this.statusCode = response.status;
@@ -69,18 +77,18 @@ export default {
 </script>
 
 <style scoped>
-a {
-  text-decoration: none;
-  color: black;
+.card {
+  background: #fff;
+  border-radius: 2px;
+  display: inline-block;
+  margin: 1rem;
+  position: relative;
+  width: 90%;
 }
 
-.sample {
-  box-sizing: border-box;
-  width: 90%;
-  padding: 8px;
-  border: 1px solid #ccc;
-  box-shadow: 0 2px 2px #aaa;
-  margin: 10px;
+.card-1 {
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+  transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
 }
 
 .links {
@@ -88,6 +96,7 @@ a {
   justify-content: center;
   align-items: center;
   text-align: center;
+  margin-bottom: 20px;
 }
 
 .thumbnail {
@@ -97,8 +106,61 @@ a {
   height: 200px;
 }
 
+h1 {
+  display: block;
+  font-size: 2em;
+  margin-left: 0;
+  margin-right: 0;
+  font-weight: bold;
+  text-align: left;
+}
+
+h2 {
+  display: block;
+  font-size: 1.5em;
+  margin-top: 0.1em;
+  margin-top: 0.1em;
+  margin-left: 0;
+  margin-right: 0;
+  font-weight: bold;
+  text-align: left;
+}
+
+h3 {
+  display: block;
+  font-size: 0.87em;
+  margin-top: 0.2em;
+  margin-bottom: 0em;
+  margin-right: 0;
+  font-weight: normal;
+  font-style: italic;
+  color: #3b8070;
+}
+
+blockquote {
+  background: #f9f9f9;
+  border-left: 10px solid #ccc;
+  margin: 1.5em 10px;
+  padding: 0.5em 10px;
+  quotes: "\201C" "\201D" "\2018" "\2019";
+  text-align: left;
+}
+blockquote:before {
+  color: #ccc;
+  font-size: 4em;
+  line-height: 0.1em;
+  content: "\201C";
+  margin-right: 0.25em;
+  vertical-align: -0.4em;
+}
+
 p {
-  margin: 15px;
+  font-size: 1.2em;
+}
+
+.naglowek {
+  text-align: left;
+  margin-left: 20%;
 }
 </style>
 

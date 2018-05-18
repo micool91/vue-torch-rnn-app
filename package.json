@@ -5,11 +5,10 @@
   "author": "Michał Jakóbowski",
   "private": true,
   "scripts": {
-    "dev": "nuxt",
     "build": "nuxt build",
     "start": "nuxt start",
     "generate": "nuxt generate",
-    "dev": "HOST=207.154.236.217 PORT=443 nuxt"
+    "dev": "HOST=207.154.236.217 PORT=80 nuxt"
   },
   "dependencies": {
     "@nuxtjs/axios": "^5.0.0",

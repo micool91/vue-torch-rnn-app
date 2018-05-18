@@ -2,7 +2,7 @@
   <section>
     <div class="card card-1">
              <div>
-          <img class="model-image" :src="'http://207.154.236.217:80/uploads/' + singleModel.trainedModel.pathImage" :alt="singleModel.trainedModel.name">
+          <img class="model-image" :src="process.env.apiURL + 'uploads/' + singleModel.trainedModel.pathImage" :alt="singleModel.trainedModel.name">
       </div>
       <h3>Nazwa modelu:</h3>
       <h1>{{ singleModel.trainedModel.name }}</h1>
@@ -94,7 +94,7 @@ export default {
 
       axios
         .post(
-          `http://207.154.236.217:80/samples/`,
+          process.env.apiURL + `samples/`,
           {
             pathT7: this.singleModel.trainedModel.pathT7,
             temperature: this.temperature / 100,
@@ -120,10 +120,10 @@ export default {
   },
   async asyncData(context) {
     const singleModel = await context.app.$axios.$get(
-      "http://207.154.236.217:80/trainedModels/" + context.params.id
+      process.env.apiURL + "trainedModels/" + context.params.id
     );
     const samplesByModel = await context.app.$axios.$get(
-      "http://207.154.236.217:80/samples/byModel/" + context.params.id
+      process.env.apiURL + "samples/byModel/" + context.params.id
     );
     return { singleModel, samplesByModel };
   }

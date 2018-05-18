@@ -18,6 +18,10 @@ module.exports = {
     ]
   },
 
+  env: {
+    apiURL: 'http://207.154.236.217:443/'
+  },
+
   /*
   ** Customize the progress-bar color
   */

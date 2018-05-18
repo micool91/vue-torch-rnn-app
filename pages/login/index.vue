@@ -32,7 +32,7 @@ export default {
     postNow() {
       axios
         .post(
-          `http://207.154.236.217:80/user/login`,
+          process.env.apiURL + `user/login`,
           {
             email: this.uname,
             password: this.psw

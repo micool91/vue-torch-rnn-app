@@ -1,7 +1,7 @@
 <template>
   
     <article class="card card-1">
-          <div class="thumbnail" :style="{ backgroundImage: 'url(http://207.154.236.217:80/uploads/' + pathImage + ')'}"></div>
+          <div class="thumbnail" :style="{ backgroundImage: 'url(' + process.env.apiURL + 'uploads/' + pathImage + ')'}"></div>
           <h3>Nazwa:</h3>
           <h1>{{ name }}</h1>
           <h3>Autor:</h3>
@@ -61,7 +61,7 @@ export default {
       };
       console.log(config);
       axios
-        .delete(`http://207.154.236.217:80/trainedModels/` + this.id, config)
+        .delete(process.env.apiURL + `trainedModels/` + this.id, config)
         .then(response => {
           console.log("response:", response);
           this.statusCode = response.status;

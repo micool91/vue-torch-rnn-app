@@ -29,7 +29,7 @@ export default {
   },
   async asyncData(context) {
     const sampleById = await context.app.$axios.$get(
-      "http://207.154.236.217:80/samples/" + context.params.id
+      process.env.apiURL + "samples/" + context.params.id
     );
     console.log(sampleById);
     return { sampleById };

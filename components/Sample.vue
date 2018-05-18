@@ -57,7 +57,7 @@ export default {
         headers: { Authorization: "bearer " + this.userToken }
       };
       axios
-        .delete(`http://http://207.154.236.217:80/samples/` + this.id, config)
+        .delete(process.env.apiURL + `samples/` + this.id, config)
         .then(response => {
           console.log("response:", response);
           this.statusCode = response.status;

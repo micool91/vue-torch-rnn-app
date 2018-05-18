@@ -29,7 +29,7 @@ export default {
     NewTrainedModel
   },
   async asyncData({ app }) {
-    const data = await app.$axios.$get(process.env.apiURL + "trainedModels/");
+    const data = await app.$axios.$get(context.env.apiURL + "trainedModels/");
     console.log(data);
     return { data };
   }

@@ -34,7 +34,7 @@ export default {
     NewTrainedModel
   },
   async asyncData({ app }) {
-    const data = await app.$axios.$get(process.env.apiURL + "trainedModels/my/models", {
+    const data = await app.$axios.$get(context.env.apiURL + "trainedModels/my/models", {
       headers: { Authorization: "bearer " + app.store.getters.userToken }
     });
     return { data };

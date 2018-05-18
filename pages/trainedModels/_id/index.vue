@@ -120,10 +120,10 @@ export default {
   },
   async asyncData(context) {
     const singleModel = await context.app.$axios.$get(
-      process.env.apiURL + "trainedModels/" + context.params.id
+      context.env.apiURL + "trainedModels/" + context.params.id
     );
     const samplesByModel = await context.app.$axios.$get(
-      process.env.apiURL + "samples/byModel/" + context.params.id
+      context.env.apiURL + "samples/byModel/" + context.params.id
     );
     return { singleModel, samplesByModel };
   }

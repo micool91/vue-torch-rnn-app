@@ -6,7 +6,7 @@
   "private": true,
   "scripts": {
     "build": "nuxt build",
-    "start": "nuxt start",
+    "start": "HOST=207.154.236.217 PORT=80 nuxt start",
     "generate": "nuxt generate",
     "dev": "HOST=207.154.236.217 PORT=80 nuxt"
   },

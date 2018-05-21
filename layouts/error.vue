@@ -1,11 +1,13 @@
 <template>
   <div class="container">
+      <center>
     <h1 v-if="error.statusCode === 404">Coś poszło nie tak...</h1>
     <h1 v-else>Coś poszło nie tak...</h1>
     <br>
     <img src="https://i.pinimg.com/originals/34/2d/17/342d173cca5bfaf320f2bccbe577e2dc.jpg" alt="Angery react">
     <br>
     <nuxt-link to="/">Strona główna</nuxt-link>
+    </center>
   </div>
 </template>
 

@@ -1,5 +1,5 @@
 <template>
-  <h1>O PROJEKCIE</h1>
+  <h1>O projekcie... [to do]</h1>
 </template>
 
 

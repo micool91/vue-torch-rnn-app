@@ -8,7 +8,7 @@
     "build": "nuxt build",
     "start": "HOST=207.154.236.217 PORT=80 nuxt start",
     "generate": "nuxt generate",
-    "dev": "HOST=207.154.236.217 PORT=80 nuxt"
+    "dev": "nuxt"
   },
   "dependencies": {
     "@nuxtjs/axios": "^5.0.0",

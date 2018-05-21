@@ -1,7 +1,7 @@
 <template>
   
     <article class="card card-1">
-          <div class="thumbnail" :style="{ backgroundImage: 'url(' + process.env.apiURL + 'uploads/' + pathImage + ')'}"></div>
+          <div class="thumbnail" :style="{ backgroundImage: 'url(' + apiURL + 'uploads/' + pathImage + ')'}"></div>
           <h3>Nazwa:</h3>
           <h1>{{ name }}</h1>
           <h3>Autor:</h3>
@@ -28,8 +28,9 @@ import axios from "axios";
 
 export default {
   data() {
+    let URL = process.env.apiURL;
     return {
-      statusCode: 11
+      apiURL: URL
     };
   },
   computed: {

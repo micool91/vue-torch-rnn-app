@@ -21,7 +21,7 @@ export default {
     Sample
   },
   async asyncData({ app }) {
-    const data = await app.$axios.$get(context.env.apiURL + "samples/my/samples/", {
+    const data = await app.$axios.$get(process.env.apiURL + "samples/my/samples/", {
       headers: { Authorization: "bearer " + app.store.getters.userToken }
     });
     return { data };

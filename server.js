@@ -28,8 +28,8 @@ else {
 function listen() {
 
   const options = {
-    key: fs.readFileSync('/jakobowski_app.key'),
-    cert: fs.readFileSync('/4fd2b81c3ffb17fa.crt')
+    key: fs.readFileSync('./jakobowski_app.key'),
+    cert: fs.readFileSync('./4fd2b81c3ffb17fa.crt')
   };
 
   https

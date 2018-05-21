@@ -1,23 +1,22 @@
 {
-  "name": "vue-torch-rnn-app",
-  "version": "1.0.0",
-  "description": "Nuxt.js Torch-RNN web application",
-  "author": "Michał Jakóbowski",
-  "private": true,
-  "scripts": {
-    "build": "nuxt build",
-    "start": "HOST=207.154.236.217 PORT=80 nuxt start",
-    "generate": "nuxt generate",
-    "dev": "nuxt"
-  },
-  "dependencies": {
-    "@nuxtjs/axios": "^5.0.0",
-    "atob": "^2.1.1",
-    "cookieparser": "^0.1.0",
-    "js-cookie": "^2.2.0",
-    "nuxt": "^1.0.0"
-  },
-  "devDependencies": {
-    "cross-env": "^5.0.1"
-  }
+    "name": "vue-torch-rnn-app",
+    "version": "1.0.0",
+    "description": "Nuxt.js Torch-RNN web application",
+    "author": "Michał Jakóbowski",
+    "private": true,
+    "scripts": {
+        "dev": "node server.js",
+        "build": "nuxt build",
+        "start": "NODE_ENV=production node server.js"
+    },
+    "dependencies": {
+        "@nuxtjs/axios": "^5.0.0",
+        "atob": "^2.1.1",
+        "cookieparser": "^0.1.0",
+        "js-cookie": "^2.2.0",
+        "nuxt": "^1.0.0"
+    },
+    "devDependencies": {
+        "cross-env": "^5.0.1"
+    }
 }

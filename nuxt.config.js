@@ -19,7 +19,7 @@ module.exports = {
   },
 
   env: {
-    apiURL: 'http://207.154.236.217:443/'
+    apiURL: 'https://jakobowski.app:8000/'
   },
 
   /*

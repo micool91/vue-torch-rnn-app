@@ -3,7 +3,7 @@
       <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   <div class="topnav" id="myTopnav">
-  <nuxt-link class="company" to="/">Jakobowski.tk</nuxt-link>
+  <nuxt-link class="company" to="/">j a k o b o w s k i . a p p</nuxt-link>
   <div class="dropdown">
     <button class="dropbtn">Generowanie treści 
       <i class="fa fa-caret-down"></i>

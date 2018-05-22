@@ -3,7 +3,7 @@ const { Nuxt, Builder } = require('nuxt')
 const https = require('https')
 const fs = require('fs')
 const isProd = (process.env.NODE_ENV === 'production')
-const port = 80
+const port = 443
 
 // We instantiate nuxt.js with the options
 const config = require('./nuxt.config.js')

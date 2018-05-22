@@ -29,7 +29,7 @@
 </form>
 <p v-if="generatedSample!==''">działa</p>
 
-<div class="tekst" v-if="generatedSample.text">
+<div class="card card-1" v-if="generatedSample.text">
     <p v-for="sample in generatedSample.text"
     :key="sample">{{ sample }}</p>
 </div>

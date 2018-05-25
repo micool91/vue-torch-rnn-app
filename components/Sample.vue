@@ -60,7 +60,6 @@ export default {
         .delete(process.env.apiURL + `samples/` + this.id, config)
         .then(response => {
           console.log("response:", response);
-          this.statusCode = response.status;
 
           if (response.status === 200) {
             this.$router.go();
@@ -160,7 +159,7 @@ p {
 
 .naglowek {
   text-align: left;
-  margin-left: 20%;
+  margin-left: 10%;
 }
 </style>
 

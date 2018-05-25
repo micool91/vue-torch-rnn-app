@@ -23,7 +23,6 @@ import TrainedModel from "@/components/TrainedModel";
 import NewTrainedModel from "@/components/NewTrainedModel";
 
 export default {
-  middleware: "authenticated",
   components: {
     TrainedModel,
     NewTrainedModel

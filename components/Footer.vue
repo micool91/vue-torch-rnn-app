@@ -4,8 +4,7 @@
       Links
     </div> -->
     <div class="Footer__Author container">
-      © 2018 
-      <a href="mailto:michal.jakobowski@outlook.com" target="_blank">Michał Jakóbowski</a> - <a href="https://inf.ug.edu.pl/" target="_blank">Instytut Informatyki UG</a>
+      © 2018 - <a href="mailto:michal.jakobowski@outlook.com" target="_blank">Michał Jakóbowski</a> - <a href="https://inf.ug.edu.pl/" target="_blank">Instytut Informatyki UG</a>
     </div>
   </footer>
 </template>

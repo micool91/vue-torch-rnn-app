@@ -86,7 +86,7 @@ export default {
   background: #fff;
   border-radius: 2px;
   display: inline-block;
-  height: 600px;
+  height: 670px;
   margin: 1rem;
   position: relative;
   width: 400px;

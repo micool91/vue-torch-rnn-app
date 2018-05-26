@@ -20,8 +20,7 @@
           <p>{{ text[5] }}</p>
           <p>{{ text[6] }}</p>
           <p>{{ text[7] }}</p>
-          <p>{{ text[8] }}</p>
-          <p>{{ text[9] }}</p>
+          <p>...</p>
           </blockquote>
           <div class="links">
           <nuxt-link :to="'/samples/' + id">

@@ -16,6 +16,9 @@ const createStore = () => {
             },
             update(state, data) {
                 state.auth = data
+            },
+            setMenu(state, menu) {
+                state.menu = menu
             }
         },
         actions: {

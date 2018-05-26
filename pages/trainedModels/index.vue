@@ -1,6 +1,6 @@
 <template>
   <section class="trainedModels">
-      <NewTrainedModel/>
+      <div v-if="isAuthenticated"><NewTrainedModel/></div>
       <TrainedModel 
       v-for="model in data.trainedModels"
       :key="model.id"
@@ -14,6 +14,7 @@
       :pathJson="model.pathJson"
       :numLayers="model.numLayers"
       :rnnSize="model.rnnSize"
+      :usunVisible="'1'"
       />
   </section>
 </template>
@@ -26,6 +27,15 @@ export default {
   components: {
     TrainedModel,
     NewTrainedModel
+  },
+  computed: {
+    isAuthenticated() {
+      if (this.$store.getters.isAuthenticated) {
+        return this.$store.getters.isAuthenticated;
+      } else {
+        return false;
+      }
+    }
   },
   async asyncData({ app }) {
     const data = await app.$axios.$get(process.env.apiURL + "trainedModels/");

@@ -6,7 +6,7 @@
     </nuxt-link>
     <div class="Header__Toggler">
       <div class="Header__Toggler__Button" @click="toggle">
-        <div :class="{'icon menu': !visible, 'icon close': visible}"></div>
+        <div :class="{'icon menu': !visible, 'icon close': visible}">#</div>
       </div>
     </div>
     <NawigacjaNav/>

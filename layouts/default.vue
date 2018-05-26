@@ -9,15 +9,32 @@
     <br>
     <br>
     <nuxt/>
+    <br>
+    <br>
+    <Footer />
   </div>
 </template>
 
 <script>
 import Nawigacja from "@/components/Nawigacja";
+import Footer from "@/components/Footer";
 
 export default {
   components: {
-    Nawigacja
+    Nawigacja,
+    Footer
+  },
+  watch: {
+    $route: 'setStore'
+  },
+  computed: {
+    visible() { return this.$store.state.visibleHeader }
+  },
+  methods: {
+    setStore() {
+      if (this.$store.state.visibleHeader) this.$store.commit('toggle', 'visibleHeader')
+      if (this.$store.state.visibleAffix) this.$store.commit('toggle', 'visibleAffix')
+    }
   }
 };
 </script>

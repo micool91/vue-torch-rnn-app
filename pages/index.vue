@@ -10,7 +10,7 @@
       </h2>
       <div class="odnosniki">
         <a href="https://github.com/micool91/vue-torch-rnn-app" target="_blank" class="button--green">Źródła GitHub</a>
-        <a href="https://bitbucket.org/mjakobowski/magisterka/src/master/" target="_blank" class="button--grey">Dokumentacja Bitbucket</a>
+        <a href="https://bitbucket.org/mjakobowski/magisterka/src/master/" target="_blank" class="button--grey">Repozytorium pracy magisterskiej</a>
       </div>
     </div>
   </section>

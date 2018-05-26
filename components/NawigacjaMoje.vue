@@ -20,15 +20,17 @@
       </nuxt-link>
       </li>
       <li class="Dropdown__List__Item">
-      <nuxt-link class="Dropdown__List__Item__Link" to="/logout">
+      <button class="Dropdown__List__Item__Link" @click="logout" style="background: #fff; border: 1px solid #dbdfe1;">
         Wyloguj się
-      </nuxt-link>
+      </button>
       </li>
     </ul>
   </div>
 </template>
 
 <script>
+import Cookie from "js-cookie";
+
 export default {
   data() {
     return {
@@ -44,6 +46,13 @@ export default {
     },
     isAuthenticated() {
       return this.$store.getters.isAuthenticated;
+    }
+  },
+  methods: {
+    logout() {
+      this.$store.commit("update", null); // mutating to store for client rendering
+      Cookie.set("auth", null); // saving token in cookie for server rendering
+      this.$router.push("/");
     }
   }
 };

@@ -68,7 +68,7 @@ export default {
           this.statusCode = response.status;
 
           if (response.status === 200) {
-            this.$router.go();
+            this.$router.go("/myTrainedModels");
           } else {
             this.$router.push("/");
           }
@@ -120,46 +120,45 @@ export default {
   margin-bottom: 20px;
 }
 
-h1 { 
-    display: block;
-    font-size: 2em;
-    margin-bottom: 0.17em;
-    margin-left: 0;
-    margin-right: 0;
-    font-weight: bold;
-    text-align: left;
-    margin-left: 60px;
+h1 {
+  display: block;
+  font-size: 2em;
+  margin-bottom: 0.17em;
+  margin-left: 0;
+  margin-right: 0;
+  font-weight: bold;
+  text-align: left;
+  margin-left: 60px;
 }
 
 h2 {
-    display: block;
-    font-size: 1.5em;
-    margin-top: 0.10em;
-    margin-bottom: 0.13em;
-    margin-left: 0;
-    margin-right: 0;
-    font-weight: bold;
-    text-align: left;
-    margin-left: 60px;
+  display: block;
+  font-size: 1.5em;
+  margin-top: 0.1em;
+  margin-bottom: 0.13em;
+  margin-left: 0;
+  margin-right: 0;
+  font-weight: bold;
+  text-align: left;
+  margin-left: 60px;
 }
 
-h3 { 
-    display: block;
-    font-size: 0.87em;
-    margin-top: 0em;
-    margin-bottom: 0em;
-    margin-left: 40px;
-    margin-right: 0;
-    font-weight: normal;
-    font-style: italic;
-    color:#3b8070;
+h3 {
+  display: block;
+  font-size: 0.87em;
+  margin-top: 0em;
+  margin-bottom: 0em;
+  margin-left: 40px;
+  margin-right: 0;
+  font-weight: normal;
+  font-style: italic;
+  color: #3b8070;
 }
 
 p {
-    text-align: left;
-    font-size: 1.4em;
-    margin-left: 60px;
+  text-align: left;
+  font-size: 1.4em;
+  margin-left: 60px;
 }
-
 </style>
 

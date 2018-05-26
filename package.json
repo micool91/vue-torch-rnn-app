@@ -1,7 +1,7 @@
 {
-    "name": "vue-torch-rnn-app",
+    "name": "jakobowski.app",
     "version": "1.0.0",
-    "description": "Nuxt.js Torch-RNN web application",
+    "description": "Generowanie treści przy pomocy sieci LSTM",
     "author": "Michał Jakóbowski",
     "private": true,
     "scripts": {
@@ -14,9 +14,15 @@
         "atob": "^2.1.1",
         "cookieparser": "^0.1.0",
         "js-cookie": "^2.2.0",
-        "nuxt": "^1.0.0"
+        "node-sass": "^4.9.0",
+        "nuxt": "^1.0.0",
+        "sass-loader": "^7.0.1",
+        "ssl-root-cas": "^1.2.5",
+        "vue-style-loader": "^4.1.0"
     },
     "devDependencies": {
-        "cross-env": "^5.0.1"
+        "cross-env": "^5.0.1",
+        "css-loader": "^0.28.11",
+        "style-loader": "^0.21.0"
     }
 }

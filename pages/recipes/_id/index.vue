@@ -46,7 +46,6 @@ export default {
     justify-content: center;
     align-items: center;
     text-align: center;
-    padding: 30px;
 }
 
 .recipe-image {

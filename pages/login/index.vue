@@ -3,10 +3,13 @@
   <div class="container">
       <p>Zaloguj się do systemu.</p>
     <label for="uname"><b>Login:</b></label>
-    <input type="text" placeholder="Enter Username" name="uname" required v-model="uname">
+    <input type="text" placeholder="Wpisz email" name="uname" required v-model="uname">
 
     <label for="psw"><b>Hasło:</b></label>
-    <input type="password" placeholder="Enter Password" name="psw" required v-model="psw">
+    <input type="password" placeholder="Wpisz hasło" name="psw" required v-model="psw">
+    <div class="zlyLogin">
+    <p v-if="stan===`1`">Nieprawidłowy login lub hasło :-(</p>
+    </div>
     <div class="links">
     <button class="button--green" type="submit">Login</button>
     </div>
@@ -25,7 +28,8 @@ export default {
   data() {
     return {
       uname: "",
-      psw: ""
+      psw: "",
+      stan: "0"
     };
   },
   methods: {
@@ -38,12 +42,17 @@ export default {
             password: this.psw
           },
           {
-            headers: { "Content-Type": "application/json" }
+            headers: { "Content-Type": "application/json" },
+            validateStatus: function(status) {
+              return true; // default
+            }
           }
         )
         .then(response => {
           console.log("response:", response);
-
+          if (response.status === 401) {
+            this.stan = `1`;
+          }
           if (response.status === 200) {
             const auth = {
               accessToken: response.data.token
@@ -51,6 +60,8 @@ export default {
             this.$store.commit("update", auth); // mutating to store for client rendering
             Cookie.set("auth", auth); // saving token in cookie for server rendering
             this.$router.push("/");
+          } else {
+            this.stan = `1`;
           }
         })
         .catch(e => {
@@ -70,6 +81,14 @@ export default {
   align-items: center;
   text-align: center;
   margin-bottom: 20px;
+}
+
+.zlyLogin {
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  margin-bottom: 20px;
+  color: red;
 }
 
 input[type="text"],
@@ -113,8 +132,7 @@ textarea {
 }
 
 p {
-    text-align: center;
-    padding: 20px;
+  text-align: center;
+  padding: 20px;
 }
-
 </style>

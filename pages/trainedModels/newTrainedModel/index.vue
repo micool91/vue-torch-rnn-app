@@ -1,5 +1,16 @@
 <template>
 <div class="container">
+<div v-if="stan===`1`" class="card card-1">
+<center><br><br><br>
+<div class="loader" id="loader"></div>
+<div class="loader" id="loader2"></div>
+<div class="loader" id="loader3"></div>
+<div class="loader" id="loader4"></div>
+	<!--Delete the "loader3" and "loader4" divs for a 2-layer loader-->
+	<!--You can also change the animation durations or delays, that looks also pretty cool -->
+<span id="text">ZAPISYWANIE...</span><br></center>
+</div>
+
 <form class="" method="post" @submit.prevent="postNow">
   <a>Nazwa:</a>
   <input type="text" name="" value="" v-model="name"><br>
@@ -51,7 +62,8 @@ export default {
       pathJson: "",
       numLayers: "",
       rnnSize: "",
-      show: false
+      show: false,
+      stan: "0"
     };
   },
   computed: {
@@ -64,6 +76,7 @@ export default {
   },
   methods: {
     postNow() {
+      this.stan = "1"
       let self = this;
       var data = new FormData();
       data.append("name", this.name);
@@ -86,6 +99,7 @@ export default {
           console.log("response:", response);
 
           if (response.status === 201) {
+            this.stan = "0"
             self.$router.push("/trainedModels");
           }
         })
@@ -145,5 +159,63 @@ textarea {
   cursor: pointer;
   min-width: 80%;
   margin: auto;
+}
+
+
+
+
+.loader{
+	border:3px solid #3B8070;
+	width:200px;
+	height:200px;
+	border-radius:50%; 
+	border-left-color: transparent;
+  border-right-color: transparent;
+	animation:rotate 2s cubic-bezier(0.26, 1.36, 0.74,-0.29) infinite;
+}
+#loader2{
+	border:3px solid #3bc9db;
+	width:220px;
+	height:220px;
+	position:relative;
+	top:-216px;
+	border-left-color: transparent;
+  border-right-color: transparent;
+	animation:rotate2 2s cubic-bezier(0.26, 1.36, 0.74,-0.29) infinite;
+}
+#loader3{
+	border:3px solid #3B8070;
+	width:240px;
+	height:240px;
+	position:relative;
+	top:-452px;
+	border-left-color: transparent;
+  border-right-color: transparent;
+	animation:rotate 2s cubic-bezier(0.26, 1.36, 0.74,-0.29) infinite;
+}
+#loader4{
+	border:3px solid #3bc9db;
+	width:260px;
+	height:260px;
+	position:relative;
+	top:-708px;
+	border-left-color: transparent;
+  border-right-color: transparent;
+	animation:rotate2 2s cubic-bezier(0.26, 1.36, 0.74,-0.29) infinite;
+}
+@keyframes rotate{
+	0%{transform:rotateZ(-360deg)}
+	100%{transform:rotateZ(0deg)}
+}
+@keyframes rotate2{
+	0%{transform:rotateZ(360deg)}
+	100%{transform:rotateZ(0deg)}
+}
+#text{
+	color:35495E;
+	font-family:Arial;
+	font-size:20px;
+	position:relative;
+	top:-857px;
 }
 </style>

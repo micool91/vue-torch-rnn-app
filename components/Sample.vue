@@ -62,7 +62,7 @@ export default {
           console.log("response:", response);
 
           if (response.status === 200) {
-            this.$router.go();
+            this.$router.go("/mySamples");
           } else {
             this.$router.push("/");
           }

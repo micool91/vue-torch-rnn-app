@@ -7,6 +7,7 @@ const port = 443
 
 // We instantiate nuxt.js with the options
 const config = require('./nuxt.config.js')
+process.env['NODE_TLS_REJECT_UNAUTHORIZED'] = 0;
 config.dev = !isProd
 const nuxt = new Nuxt(config)
 

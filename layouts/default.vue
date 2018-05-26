@@ -1,7 +1,8 @@
 <template>
   <div>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat">
-    <Header />
+    <Nawigacja />
+    <br>
     <br>
     <br>
     <br>
@@ -12,11 +13,11 @@
 </template>
 
 <script>
-import Header from "@/components/Header";
+import Nawigacja from "@/components/Nawigacja";
 
 export default {
   components: {
-    Header
+    Nawigacja
   }
 };
 </script>

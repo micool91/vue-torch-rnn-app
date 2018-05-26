@@ -7,6 +7,7 @@
       :pathImage="model.pathImage"
       :name="model.name"
       :author="model.author"
+      :genre="model.genre"
       :description="model.description"
       :id="model._id"
       :pathT7="model.pathT7"

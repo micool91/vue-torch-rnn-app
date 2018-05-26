@@ -28,6 +28,11 @@ export default {
         headers: { Authorization: "bearer " + app.store.getters.userToken }
       }
     );
+    data.samples.forEach(element => {
+      if (element.trainedModel === null) {
+        element.trainedModel = { name: "Model został wcześniej usunięty" };
+      }
+    });
     return { data };
   }
 };

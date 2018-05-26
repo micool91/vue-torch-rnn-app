@@ -6,9 +6,14 @@ var cookieparser = require('cookieparser')
 const createStore = () => {
     return new Vuex.Store({
         state: {
-            auth: null
+            auth: null,
+            visibleHeader: false,
+            menu: {}
         },
         mutations: {
+            toggle(state, key) {
+                state[key] = !state[key]
+            },
             update(state, data) {
                 state.auth = data
             }
@@ -31,8 +36,7 @@ const createStore = () => {
                     let rawPayload = atob(encodedPayload);
                     let user = JSON.parse(rawPayload);
                     return user.email
-                } else
-                {
+                } else {
                     return null;
                 }
             },

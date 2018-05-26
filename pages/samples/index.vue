@@ -21,6 +21,11 @@ export default {
   },
   async asyncData({ app }) {
     const data = await app.$axios.$get(process.env.apiURL + "samples/");
+    data.samples.forEach(element => {
+      if (element.trainedModel === null) {
+        element.trainedModel = { name: "Model został wcześniej usunięty" };
+      }
+    });
     return { data };
   }
 };

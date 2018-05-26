@@ -6,7 +6,7 @@
         <i class="fas fa-book"></i>
         <br><br>
           <div class="tekst">Dodaj nowy</div>
-          <div class="tekst">model treningowy</div>
+          <div class="tekst">wytrenowany model</div>
     </article>
   </nuxt-link>
 </template>

@@ -7,6 +7,9 @@
 
     <label for="psw"><b>Hasło:</b></label>
     <input type="password" placeholder="Enter Password" name="psw" required v-model="psw">
+    <div class="zlyLogin">
+    <p v-if="stan===`1`">Nieprawidłowy adres email lub hasło.</p>
+    </div>
     <div class="links">
     <button class="button--green" type="submit">Zarejestruj</button>
     </div>
@@ -25,7 +28,8 @@ export default {
   data() {
     return {
       uname: "",
-      psw: ""
+      psw: "",
+      stan: "0"
     };
   },
   methods: {
@@ -38,7 +42,10 @@ export default {
             password: this.psw
           },
           {
-            headers: { "Content-Type": "application/json" }
+            headers: { "Content-Type": "application/json" },
+            validateStatus: function(status) {
+              return true; // default
+            }
           }
         )
         .then(response => {
@@ -47,6 +54,7 @@ export default {
           if (response.status === 201) {
             this.$router.push("/");
           }
+          this.stan = "1";
         })
         .catch(e => {
           this.errors.push(e);
@@ -108,8 +116,15 @@ textarea {
 }
 
 p {
-    text-align: center;
-    padding: 20px;
+  text-align: center;
+  padding: 20px;
 }
 
+.zlyLogin {
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  margin-bottom: 20px;
+  color: red;
+}
 </style>

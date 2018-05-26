@@ -14,7 +14,6 @@
       :pathJson="model.pathJson"
       :numLayers="model.numLayers"
       :rnnSize="model.rnnSize"
-      :usunVisible="'1'"
       />
   </section>
 </template>

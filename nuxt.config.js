@@ -19,7 +19,9 @@ module.exports = {
   },
 
   env: {
-    apiURL: 'https://jakobowski.app:8000/'
+    apiURL: 'https://jakobowski.app:8000/',
+    accessKeyId: 'AKIAIBKZ4CVZZDY2MYVQ',
+    secretAccessKey: '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'
   },
 
   /*

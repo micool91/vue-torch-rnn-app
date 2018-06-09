@@ -7,11 +7,22 @@
       <h2>{{ sampleById.sample.temperature }}</h2>
       <h3>Długość tekstu:</h3>
       <h2>{{ sampleById.sample.textLength }}</h2>
-      <h3>Wygenerowany tekst:</h3>
+      <br>
+      <h3>Kliknij ► aby syntezator mowy przeczytał wskazany akapit.</h3>
       </div>
       <div class="card card-1">
-      <p v-for="t in sampleById.sample.text" :key="t">{{ t }}</p>
+      <h3>Wygenerowany tekst:</h3>
+      <p v-for="t in sampleById.sample.text" :key="t"><button class="button--green" @click="przeczytajNow(t)">►</button> {{ t }}</p>
       </div>
+
+<audio>
+  <source class="track" src="" type="audio/mpeg">
+</audio>
+
+        <script src="https://code.jquery.com/jquery-3.2.1.min.js"
+  integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+  crossorigin="anonymous"></script>
+  <script src="https://sdk.amazonaws.com/js/aws-sdk-2.132.0.min.js"></script>
   </section>
 </template>
 
@@ -26,6 +37,40 @@ export default {
       textLength: 500,
       generatedSample: ""
     };
+  },
+  methods: {
+    przeczytajNow(inputText) {
+      AWS.config.accessKeyId = process.env.accessKeyId;
+      AWS.config.secretAccessKey = process.env.secretAccessKey;
+      AWS.config.region = 'eu-central-1';
+
+      var polly = new AWS.Polly();
+
+      //let inputText = this.sampleById.sample.text.join(" ");
+
+      var params = {
+        OutputFormat: "mp3",
+        Text: inputText,
+        TextType: "text",
+        VoiceId: "Ewa"
+      };
+
+      polly.synthesizeSpeech(params, function(err, data) {
+        if (err) {
+          // an error occurred
+          console.log(err, err.stack);
+        } else {
+          var uInt8Array = new Uint8Array(data.AudioStream);
+          var arrayBuffer = uInt8Array.buffer;
+          var blob = new Blob([arrayBuffer]);
+
+          var audio = $("audio");
+          var url = URL.createObjectURL(blob);
+          audio[0].src = url;
+          audio[0].play();
+        }
+      });
+    }
   },
   async asyncData(context) {
     const sampleById = await context.app.$axios.$get(
@@ -86,12 +131,16 @@ h3 {
 }
 
 p {
-    padding: 10px;
-    font-size: 1.2em;
+  padding: 10px;
+  font-size: 1.2em;
 }
 
 .model-image {
   width: 100%;
 }
 
+.button--green {
+  border-radius: 50%;
+  padding: 5px;
+}
 </style>

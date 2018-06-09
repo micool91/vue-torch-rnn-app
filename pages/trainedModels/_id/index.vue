@@ -43,7 +43,7 @@
 
 <div class="card card-1" v-if="generatedSample.text">
     <p v-for="sample in generatedSample.text"
-    :key="sample" class="subtitle">{{ sample }}</p>
+    :key="sample" class="subtitle"><button class="button--green" @click="przeczytajNow(sample)">►</button> {{ sample }}</p>
 </div>
 
     <Sample 
@@ -55,6 +55,15 @@
       :text="s.text"
       :id="s._id"
     />
+
+  <audio>
+    <source class="track" src="" type="audio/mpeg">
+  </audio>
+
+  <script src="https://code.jquery.com/jquery-3.2.1.min.js"
+    integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+    crossorigin="anonymous"></script>
+  <script src="https://sdk.amazonaws.com/js/aws-sdk-2.132.0.min.js"></script>
   </section>
 </template>
 
@@ -172,6 +181,38 @@ export default {
         .catch(e => {
           this.errors.push(e);
         });
+    },
+    przeczytajNow(inputText) {
+      AWS.config.accessKeyId = process.env.accessKeyId;
+      AWS.config.secretAccessKey = process.env.secretAccessKey;
+      AWS.config.region = "eu-central-1";
+
+      var polly = new AWS.Polly();
+
+      //let inputText = this.sampleById.sample.text.join(" ");
+
+      var params = {
+        OutputFormat: "mp3",
+        Text: inputText,
+        TextType: "text",
+        VoiceId: "Ewa"
+      };
+
+      polly.synthesizeSpeech(params, function(err, data) {
+        if (err) {
+          // an error occurred
+          console.log(err, err.stack);
+        } else {
+          var uInt8Array = new Uint8Array(data.AudioStream);
+          var arrayBuffer = uInt8Array.buffer;
+          var blob = new Blob([arrayBuffer]);
+
+          var audio = $("audio");
+          var url = URL.createObjectURL(blob);
+          audio[0].src = url;
+          audio[0].play();
+        }
+      });
     }
   },
   async asyncData(context) {
@@ -368,5 +409,10 @@ p {
   color: #2b3547;
   word-spacing: 5px;
   padding-bottom: 15px;
+}
+
+.button--green {
+  border-radius: 50%;
+  padding: 5px;
 }
 </style>

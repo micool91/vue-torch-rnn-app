@@ -43,7 +43,7 @@
 
 <div class="card card-1" v-if="generatedSample.text">
     <p v-for="sample in generatedSample.text"
-    :key="sample" class="subtitle"><button class="button--green" @click="przeczytajNow(sample)">►</button> {{ sample }}</p>
+    :key="sample" class="subtitle"><button class="buttongrr" @click="przeczytajNow(sample)">►</button> {{ sample }}</p>
 </div>
 
     <Sample 
@@ -411,8 +411,16 @@ p {
   padding-bottom: 15px;
 }
 
-.button--green {
+.buttongrr {
+  display: inline-block;
   border-radius: 50%;
+  border: 1px solid #3b8070;
+  color: #3b8070;
+  text-decoration: none;
   padding: 5px;
+}
+.buttongrr:hover {
+  color: #fff;
+  background-color: #3b8070;
 }
 </style>

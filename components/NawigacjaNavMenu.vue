@@ -4,6 +4,11 @@
       <NawigacjaNavMenuDropdown/>
     </li>
     <li class="Menu__Item">
+      <nuxt-link class="Menu__Item__Link" to="/trading">
+        Exchange Challange 2019
+      </nuxt-link>
+    </li>
+    <li class="Menu__Item">
       <nuxt-link class="Menu__Item__Link" to="/about">
         O projekcie
       </nuxt-link>

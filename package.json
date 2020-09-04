@@ -16,7 +16,7 @@
         "chart.js": "^2.8.0",
         "cookieparser": "^0.1.0",
         "js-cookie": "^2.2.0",
-        "node-sass": "^4.9.0",
+        "node-sass": "^4.13.1",
         "nuxt": "^1.0.0",
         "sass-loader": "^7.0.1",
         "ssl-root-cas": "^1.2.5",
